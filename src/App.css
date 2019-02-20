@@ -1,33 +1,192 @@
-.App {
+body{
+  background-image: url(https://i.pinimg.com/originals/d0/e2/4c/d0e24c02665d7b3e8a6a2128ad93ae79.jpg);
+  background-size: cover;
+
+}
+
+.clicked {
+text-decoration: line-through;
+color: rgb(100, 100, 100);
+}
+.add-button{
+  background-color: transparent;
+  color: rgba(255, 255, 255, 0);
+  cursor: pointer;
+  border: 0;
+  font-size: 20px;
+}
+.container:hover input ~ .add-button {
+color: rgb(255,255,255)
+}
+/* The container */
+.container {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.input-task {
+  width: 60%;
+  font-size: 50px;
+      margin-bottom: 50px;
+margin-right: 10px;
+margin-top: 23px;
+    background: 0;
+    border: 0;
+    border-bottom: 2px solid #fff;
+    color: #fff;
+    font-weight: 400;
+    outline: 0;
+    text-align: center;
+    transition: border-color .2s ease;
+}
+
+.input-task::placeholder {
+    font-size: 120%;
+    line-height: 120%;
+    font-weight: 200;
+    color: rgba(238, 238, 238, 0.486);
+}
+.form-list{
   text-align: center;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.containerl{
+      background-color: rgba(40, 120, 146, 0.19);
   color: white;
+  width: 45%;
+position: absolute;
+top:28%;
+left: 27%;
+padding: 20px; 
+border: 1px solid #ffffff61;
+border-radius: 15px; 
+font-family: 'Indie Flower', cursive;
+
+}
+/* Hide the browser's default checkbox */
+.container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
 }
 
-.App-link {
-  color: #61dafb;
+/* Create a custom checkbox */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: -5px;
+  height: 30px;
+  width: 30px;
+  background-color: transparent;
+  border: 2px solid white;
+  border-radius: 50%;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+/* On mouse-over, add a grey background color */
+.container:hover input ~ .checkmark {
+  background-color: rgb(255,255,255,0.3);
+}
+
+/* When the checkbox is checked, add a blue background */
+.container input:checked ~ .checkmark {
+  background-color: transparent;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.container .checkmark:after {
+  left: 11px;
+  top: 6px;
+  width: 7px;
+  height: 12px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.main-button {
+  height: 50px;
+  width: 100px;
+  background-color: transparent;
+  color: white;
+  border-radius: 10px;
+  font-size: 20px;
+
+    border: 1px solid;
+  
+}
+.main-button:hover{
+  background-color: rgba(255, 255, 255, 0.205);
+}
+
+button:focus {outline:0;}
+
+
+
+@media only screen and (max-width: 480px) {  
+ body{
+   background-image: url(background.jpg);
+   background-size: inherit;
+ }
+  .containerl{
+    width: 80%;
+    left: 10px;
+    background-color: rgba(4, 36, 79, 0.45);
   }
-  to {
-    transform: rotate(360deg);
+ 
+  
+  .main-button{
+    width: 50px;
+    height: 25px;
+    font-size: 8px
   }
+  h3{
+    font-size: 18px;
+  }
+  .checkmark{
+    width: 15px;
+    height: 15px;
+    top: 5px;
+    left: 5px;
+  }
+  .input-task{
+    font-size: 25px;
+    margin-bottom: 25px;
+  }
+  .input-task::placeholder {
+    font-size: 25px;
+    line-height: 50%;
+    font-weight: 200;
+    color: rgba(238, 238, 238);
+}
+.container .checkmark:after {
+    left: 5px;
+    top: 2px;
+    width: 2px;
+    height: 6px;
+}
+.add-button{
+  color: rgb(255,255,255,0.5);
+}
 }
