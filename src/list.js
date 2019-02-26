@@ -11,53 +11,18 @@ class List extends Component {
 
     }
     componentDidMount() {
-        this.hydrateStateWithLocalStorage();
-
-        // add event listener to save state to localStorage
-        // when user leaves/refreshes the page
-        window.addEventListener(
-            "beforeunload",
-            this.saveStateToLocalStorage.bind(this)
-        );
-    }
-
-    componentWillUnmount() {
-        window.removeEventListener(
-            "beforeunload",
-            this.saveStateToLocalStorage.bind(this)
-        );
-
-        // saves if component has a chance to unmount
-        this.saveStateToLocalStorage();
-    }
-
-    hydrateStateWithLocalStorage() {
-        // for all items in state
-        for (let key in this.state) {
-            // if the key exists in localStorage
-            if (localStorage.hasOwnProperty(key)) {
-                // get the key's value from localStorage
-                let value = localStorage.getItem(key);
-
-                // parse the localStorage string and setState
-                try {
-                    value = JSON.parse(value);
-                    this.setState({ [key]: value });
-                } catch (e) {
-                    // handle empty string
-                    this.setState({ [key]: value });
-                }
-            }
+        // define the local storge
+        // dont set if there is local storge 
+        if (!localStorage.getItem("taskList")) {
+            localStorage.setItem("taskList", JSON.stringify(this.state.taskList))
         }
+        // making the state local storge
+        localStorage.getItem("taskList") && this.setState({
+            taskList: JSON.parse(localStorage.getItem("taskList"))
+        });
+
     }
 
-    saveStateToLocalStorage() {
-        // for every item in React state
-        for (let key in this.state) {
-            // save to localStorage
-            localStorage.setItem(key, JSON.stringify(this.state[key]));
-        }
-    }
 
     updateForm = (event) => {
         const newTask = event.target.value
@@ -67,7 +32,7 @@ class List extends Component {
         copy[key] = newTask;
         this.setState({ taskObject: copy })
 
-        localStorage.setItem(key, copy[key]);
+        // localStorage.setItem(key, copy[key]);
 
 
 
@@ -84,7 +49,7 @@ class List extends Component {
             }
         })
         localStorage.setItem("taskList", JSON.stringify(copy));
-        localStorage.setItem("task", "");
+        // localStorage.setItem("task", "");
     }
 
 
@@ -111,7 +76,10 @@ class List extends Component {
             </div>
         );
     }
-    clearAll = () => this.setState({ taskList: [] })
+    clearAll = () => {
+        this.setState({ taskList: [] })
+        localStorage.setItem("taskList", []);
+    }
     addToDone = task => {
         const copy = this.state.taskList.slice()
         copy.splice(task, 1)
