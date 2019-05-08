@@ -1,7 +1,7 @@
 # To Do List
 
 
-Make your tasks orgnized by adding, deleting and mark the completing tasks
+Make your tasks orgnized by adding, deleting and mark the completing tasks [Visit the website](https://hala-almaimoni.github.io/ToDoList/)
 
 
 ![Screen shot of the website](screenshot.png)
